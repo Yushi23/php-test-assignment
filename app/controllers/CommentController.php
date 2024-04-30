@@ -11,7 +11,7 @@ class CommentController
         $data = $_GET['text'] ?? null;
         $dataUrl = new DataFromUrl();
         $resultData = $dataUrl->getFilteredData($data);
-        include_once 'app/views/app.php';
+        include_once __DIR__ . '/../views/app.php';
     }
 
 }

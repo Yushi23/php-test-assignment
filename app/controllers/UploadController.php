@@ -12,7 +12,7 @@ class UploadController
     public function run()
     {
         $dataUrl = new DataFromUrl();
-        $db = DB::getInstance(parse_ini_file('../.env'));
+        $db = DB::getInstance(parse_ini_file(__DIR__ . '/../../.env'));
 
         $post = new Post($db);
         $post->insertToTable($dataUrl->getData('https://jsonplaceholder.typicode.com/posts'));
@@ -20,6 +20,6 @@ class UploadController
         $comment = new Comment($db);
         $comment->insertToTable($dataUrl->getData('https://jsonplaceholder.typicode.com/comments'));
 
-        print_r("Загружено {$post->getRecordsAfterChange()} записей и {$comment->getRecordsAfterChange()} комментариев");
+        echo("Загружено {$post->getRecordsAfterChange()} записей и {$comment->getRecordsAfterChange()} комментариев");
     }
 }
